@@ -178,6 +178,9 @@ void rdp_write_client_time_zone(STREAM* s, rdpSettings* settings)
 	rdp_get_client_time_zone(s, settings);
 	clientTimeZone = settings->client_time_zone;
 
+	sprintf(clientTimeZone->standardName, "%s", "GMT Standard Time");
+	sprintf(clientTimeZone->daylightName, "%s", "GMT Daylight Time");
+
 	standardName = (uint8*) freerdp_uniconv_out(settings->uniconv, clientTimeZone->standardName, &length);
 	standardNameLength = length;
 
